@@ -1,18 +1,16 @@
-#include <stdio.h>
-#include <string.h>
-#include "stack.h"
+#include "stack_struct.h"
+
 int main(int argc, char *argv[])
 {
-    STACK stack, new_stack;
-    STACK *p = &stack, *p_new = &new_stack;
-    int i = 1, s = 0, j = 0;
+    STACK *p = new STACK;
+    int i = 1;
     while (i < argc)
     {
         if (strcmp(argv[i], "-S") == 0)
         {
             i++;
-            s = 0;
-            for (j = 0; j < strlen(argv[i]); j++)
+            int s = 0;
+            for (int j = 0; j < strlen(argv[i]); j++)
                 s = s * 10 + (argv[i][j] - '0');
             initSTACK(p, s);
             printf("S  %d  ", p->max);
@@ -20,9 +18,10 @@ int main(int argc, char *argv[])
         }
         else if (strcmp(argv[i], "-C") == 0)
         {
-            initSTACK(p_new, *p);
+            STACK *q = new STACK;
+            initSTACK(q, *p);
             destroySTACK(p);
-            initSTACK(p,*p_new);
+            p = q;
             printf("C  ");
         }
         else if (strcmp(argv[i], "-I") == 0)
@@ -30,16 +29,19 @@ int main(int argc, char *argv[])
             i++;
             while (i < argc && argv[i][0] >= '0' && argv[i][0] <= '9')
             {
-                s = 0;
-                for (j = 0; j < strlen(argv[i]); j++)
+                int s = 0;
+                for (int j = 0; j < strlen(argv[i]); j++)
                     s = s * 10 + (argv[i][j] - '0');
-                p = push(p, s);
-                if (!p)
+                try
+                {
+                    p = push(p, s);
+                    i++;
+                }
+                catch (...)
                 {
                     printf("I  E");
                     return 0;
                 }
-                i++;
             }
             i--;
             printf("I  ");
@@ -48,13 +50,16 @@ int main(int argc, char *argv[])
         {
             int tmp;
             i++;
-            s = 0;
-            for (j = 0; j < strlen(argv[i]); j++)
+            int s = 0;
+            for (int j = 0; j < strlen(argv[i]); j++)
                 s = s * 10 + (argv[i][j] - '0');
-            for (j = 0; j < s; j++)
+            for (int j = 0; j < s; j++)
             {
-                p = pop(p, tmp);
-                if (!p)
+                try
+                {
+                    p = pop(p, tmp);
+                }
+                catch (...)
                 {
                     printf("O  E");
                     return 0;
@@ -65,13 +70,14 @@ int main(int argc, char *argv[])
         else if (strcmp(argv[i], "-A") == 0)
         {
             i++;
-            s = 0;
-            for (j = 0; j < strlen(argv[i]); j++)
+            int s = 0;
+            STACK *q = new STACK;
+            for (int j = 0; j < strlen(argv[i]); j++)
                 s = s * 10 + (argv[i][j] - '0');
-            initSTACK(p_new, s);
-            p_new = assign(p_new, *p);
+            initSTACK(q, s);
+            q = assign(q, *p);
             destroySTACK(p);
-            initSTACK(p,*p_new);
+            p = q;
             printf("A  ");
         }
         else if (strcmp(argv[i], "-N") == 0)
@@ -83,22 +89,24 @@ int main(int argc, char *argv[])
         else if (strcmp(argv[i], "-G") == 0)
         {
             i++;
-            s = 0;
-            for (j = 0; j < strlen(argv[i]); j++)
+            int s = 0;
+            for (int j = 0; j < strlen(argv[i]); j++)
                 s = s * 10 + (argv[i][j] - '0');
-            if (s > p->pos - 1)
+            try
+            {
+                printf("G  %d  ", getelem(p, s));
+                i++;
+            }
+            catch (...)
             {
                 printf("G  E");
                 return 0;
             }
-            printf("G  %d  ", p->elems[s]);
-            i++;
             continue;
         }
         print(p);
         i++;
     }
     destroySTACK(p);
-    destroySTACK(p_new);
     return 0;
 }

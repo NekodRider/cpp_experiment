@@ -23,9 +23,10 @@ class Line : public Point
         //|ad＋be＋cf－af－bc－de|/2
         return abs(this->start.getX() * this->end.getY() + this->start.getY() * p.getX() + this->end.getX() * p.getY() - this->start.getX() * p.getY() - this->start.getY() * this->end.getX() - this->end.getY() * p.getX()) / this->getLength();
     }
-    void display(){
+    void display()
+    {
         this->start.display();
-        cout<<"--";
+        cout << "--";
         this->end.display();
     }
 };

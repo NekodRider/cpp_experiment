@@ -1,4 +1,8 @@
-#include <stdio.h>
+#include <iostream>
+#include <malloc.h>
+#include <cstring>
+#include <stdexcept>
+
 typedef struct STACK
 {
     int *elems; //申请内存用于存放栈的元素

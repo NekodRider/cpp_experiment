@@ -1,43 +1,14 @@
 #include<iostream>
-#include<typeinfo>
+#include<cmath>
 using namespace std;
 #include"point.h"
 #include"line.h"
 #include"circle.h"
 
 void display(Point& a){
-
     a.display();
 }
 double getDist(Point &a,Point &b){
-    cout<<endl<<typeid(a).name()<<endl;
-    if(typeid(a).name()=="Point"){
-        if(typeid(b).name()=="Line"){
-            return b.getDist(a);
-        }
-        if(typeid(b).name()=="Circle"){
-            Circle *p=(Circle *)&b;
-            return a.getDist(b)-p->getR();
-        }
-    }
-    if(typeid(a).name()=="Line"){
-        if(typeid(b).name()=="Line"){
-            return -1;
-        }
-        if(typeid(b).name()=="Circle"){
-            Circle *p=(Circle *)&b;
-            return a.getDist(b)-p->getR();
-        }
-    }
-    if(typeid(a).name()=="Circle"){
-        Circle *p=(Circle *)&a;
-        if(typeid(b).name()=="Line"){
-            return b.getDist(a)-p->getR();
-        }
-        if(typeid(b).name()=="Point"){
-            return a.getDist(b)-p->getR();
-        }
-    }
     return a.getDist(b);
 }
 
@@ -51,17 +22,17 @@ int main(){
     display(a);
     cout<<"----B";
     display(b);
-    cout<<"  Distance="<<getDist(a,b)<<endl;
+    cout<<"  Distance = "<<getDist(a,b)<<endl<<"Line ";
     display(l);
-    cout<<"  Length="<<l.getLength()<<"  MidPoint";
+    cout<<"  Length = "<<l.getLength()<<"  MidPoint";
     l.displayMid();
     
-    cout<<endl<<"A";
+    cout<<endl<<"CircleX";
     display(m);
     cout<<"Girth = "<<m.girth()<<", Area = "<<m.area()<<endl;
-    cout<<"B";
+    cout<<"CircleY";
     display(n);
     cout<<"Girth = "<<n.girth()<<", Area = "<<n.area()<<endl;
-    cout<<"Dist="<<getDist(m,n);
+    cout<<"The Distance of CircleX and CircleY = "<<getDist(m,n);
     return 0;
 }

@@ -1,5 +1,6 @@
 #include<iostream>
-#include<math.h>
+#include<cmath>
+
 class Point{
     private:
         double x,y;
