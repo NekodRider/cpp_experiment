@@ -1,28 +1,20 @@
-# CPP Experiment
+cloc .
+      26 text files.
+classified 26 files      26 unique files.                              
+       2 files ignored.
 
-HUST IS16 CPP Experiment
-
-## Code Status
-
-```code
+github.com/AlDanial/cloc v 1.80  T=0.01 s (1781.3 files/s, 87851.9 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
 C++                             12             50              0            806
 C/C++ Header                    10             13              3            307
-
+JSON                             1              0              0             29
 Markdown                         2              5              0             20
 -------------------------------------------------------------------------------
-SUM:                            24             68              3           1133
+SUM:                            25             68              3           1162
 -------------------------------------------------------------------------------
-
-```
-
-## File Tree
-
-``` tree
-cpp_experiment
-├── README.md
+.
 ├── addition
 │   ├── 1
 │   │   ├── line_point.h
@@ -36,6 +28,8 @@ cpp_experiment
 │       ├── line.h
 │       ├── main.cpp
 │       └── point.h
+├── README.md
+├── report.md
 ├── stack2queue
 │   ├── dancer.cpp
 │   ├── main.cpp
@@ -50,9 +44,8 @@ cpp_experiment
 │   ├── stack_op.cpp
 │   └── stack_op.h
 └── stack_struct
-​    ├── main.cpp
-​    ├── stack_struct.cpp
-​    └── stack_struct.h
+    ├── main.cpp
+    ├── stack_struct.cpp
+    └── stack_struct.h
 
-8 directories, 23 files
-```
+8 directories, 24 files
