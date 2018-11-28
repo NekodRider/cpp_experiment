@@ -49,7 +49,7 @@ STACK &STACK::operator>>(int &e)
 STACK &STACK::operator=(const STACK &s)
 {
     if (int(this) == int(&s))
-        throw std::invalid_argument("COPY ITSELF.");
+        return *this;
     int **p_tmp = (int **)&(this->elems);
     *(int *)&(this->max) = s.size();
     free(*p_tmp);

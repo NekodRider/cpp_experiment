@@ -40,7 +40,8 @@ int main(int argc, char *argv[])
                 catch (...)
                 {
                     printf("I  E");
-                    return 0;
+                    destroySTACK(p);
+                    return 1;
                 }
             }
             i--;
@@ -62,7 +63,8 @@ int main(int argc, char *argv[])
                 catch (...)
                 {
                     printf("O  E");
-                    return 0;
+                    destroySTACK(p);
+                    return 1;
                 }
             }
             printf("O  ");
@@ -100,7 +102,8 @@ int main(int argc, char *argv[])
             catch (...)
             {
                 printf("G  E");
-                return 0;
+                destroySTACK(p);
+                return 1;
             }
             continue;
         }

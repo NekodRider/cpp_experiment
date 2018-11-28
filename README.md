@@ -25,17 +25,11 @@ cpp_experiment
 ├── README.md
 ├── addition
 │   ├── 1
-│   │   ├── line_point.h
 │   │   └── main.cpp
 │   ├── 2
-│   │   ├── circle.h
-│   │   ├── line_point.h
 │   │   └── main.cpp
 │   └── 3
-│       ├── circle.h
-│       ├── line.h
-│       ├── main.cpp
-│       └── point.h
+│       └── main.cpp
 ├── stack2queue
 │   ├── dancer.cpp
 │   ├── main.cpp
@@ -54,5 +48,5 @@ cpp_experiment
 ​    ├── stack_struct.cpp
 ​    └── stack_struct.h
 
-8 directories, 23 files
+8 directories, 20 files
 ```

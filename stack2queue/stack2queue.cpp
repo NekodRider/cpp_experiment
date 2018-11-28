@@ -36,17 +36,15 @@ QUEUE &QUEUE::operator>>(int &e)
     int tmp;
     if (!this->s2 && !STACK::operator int())
         throw std::underflow_error("QUEUE EMPTY.");
-    if (int(this->s2))
-        this->s2 >> e;
-    else
+    if(!int(this->s2))
     {
         while (STACK::operator int())
         {
             STACK::operator>>(tmp);
             this->s2 << tmp;
         }
-        this->s2 >> e;
     }
+    this->s2 >> e;
     return *this;
 }
 

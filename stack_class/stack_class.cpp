@@ -49,7 +49,7 @@ STACK &STACK::pop(int &e)
 STACK &STACK::assign(const STACK &s)
 {
     if (int(this) == int(&s))
-        throw std::invalid_argument("COPY ITSELF.");
+        return *this;
     this->pos = s.pos;
     *(int *)&(this->max) = s.size();
     for (int i = 0; i < this->pos; i++)

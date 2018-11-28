@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
                 catch (...)
                 {
                     printf("I  E  ");
+                    delete p;
                     return 1;
                 }
             }
@@ -59,6 +60,7 @@ int main(int argc, char *argv[])
             catch (...)
             {
                 printf("O  E  ");
+                delete p;
                 return 1;
             }
             printf("O  ");
@@ -95,6 +97,7 @@ int main(int argc, char *argv[])
             catch (...)
             {
                 printf("G  E  ");
+                delete p;
                 return 1;
             }
         }

@@ -29,7 +29,6 @@ int main()
         int p, q;
         male >> p;
         female >> q;
-        cout << p << " " << q << endl;
         if (p == 1 && q == 1)
         {
             cout << count;

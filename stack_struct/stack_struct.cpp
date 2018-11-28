@@ -57,7 +57,7 @@ STACK *const pop(STACK *const p, int &e)
 STACK *const assign(STACK *const p, const STACK &s)
 {
     if (int(p) == int(&s))
-        throw std::invalid_argument("COPY ITSELF.");
+        return p;
     free(p->elems);
     p->elems = (int *)malloc(sizeof(int) * s.max);
     for (int i = 0; i < s.pos; i++)
